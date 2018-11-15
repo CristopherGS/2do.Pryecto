@@ -1,5 +1,6 @@
 require 'byebug'
 require_relative 'pilas'
+require_relative 'colas'
 def limpiar_pantalla
     system ("clear")
 end
@@ -16,7 +17,7 @@ def ingreso_de_datos(array)
     array[i] = array[i].to_i
   end
 end
-def ordenar_por_metodos(array, pila)
+def ordenar_por_metodos(array, cola, pila)
     begin
         puts '1. Cola'
         puts '2. Pila'
@@ -26,6 +27,16 @@ def ordenar_por_metodos(array, pila)
     opcion = gets.chomp
     limpiar_pantalla()
     if opcion == '1'
+        if array.size!=0
+            arreglob = array.join(' => ')
+            cola.ordenar_cola(array)
+            cola.mostrar_tabla (arreglob)
+            gets
+            else
+              puts 'Ingrese nuevos datos para ordenar'
+              gets
+            end
+
     elsif opcion == '2'
         if array.size != 0
             arreglob = array.join(' => ')
@@ -39,7 +50,50 @@ def ordenar_por_metodos(array, pila)
     limpiar_pantalla
 end while opcion != '4'
 end 
+
+
+def ordenar_pasito_a_pasito_XD(array, cola, pila)
+    begin
+        puts '1. Cola'
+        puts '2. Pila'
+        puts '3. Listas'
+        puts '4. salir'
+        puts 'Ingrese la opcion. '
+    opcion = gets.chomp
+    limpiar_pantalla()
+    if opcion == '1'
+        if array.size!=0
+            arreglob = array.join(' => ')
+            cola.ordenar_cola(array)
+            cola.mostrar_pasos
+            gets
+            else
+              puts 'Ingrese nuevos datos para ordenar'
+              gets
+            end
+
+    elsif opcion == '2'
+        if array.size != 0
+            arreglob = array.join(' => ')
+            pila.ordenar_pila(array)
+            pila.imprimir_procedimiento (arreglob)
+        else
+            puts 'ingrese valores'
+        end 
+    elsif opcion == '3'
+       
+    end
+    limpiar_pantalla
+end while opcion != '4'
+end 
+
+
+
+
+
+
 pila = Pila.new
+cola = Cola.new
 array = []
 begin
     puts '1. Ingreso de numeros'
@@ -51,8 +105,9 @@ begin
     if opcion == '1'
      ingreso_de_datos(array)
     elsif opcion == '2'
-        ordenar_por_metodos(array, pila)
+        ordenar_por_metodos(array, cola, pila)
     elsif opcion == '3'
+        ordenar_pasito_a_pasito_XD(array, cola, pila)
     end
     limpiar_pantalla
 end while opcion != '4'
