@@ -28,9 +28,9 @@ def ordenar_por_metodos(array, pila)
     if opcion == '1'
     elsif opcion == '2'
         if array.size != 0
-            arraynew = array.join(',')
+            arreglob = array.join(' => ')
             pila.ordenar_pila(array)
-            pila.tabla_de_procedimiento(arraynew)
+            pila.imprimir_procedimiento (arreglob)#arreglado
         else
             puts 'ingrese valores'
         end 

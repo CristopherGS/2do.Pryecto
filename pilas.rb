@@ -152,7 +152,7 @@ class Pila
   puts tabla
       end
 
-      def tabla_de_procedimiento(contador,arreglob)
+      def tabla_de_procedimiento(contador, arreglob)
         aux=0
   tabla = Terminal::Table.new do |a|
   a.title= "los elementos a ordenar son: #{arreglob}"
@@ -160,7 +160,7 @@ class Pila
   for i in 0..contador-1
   a.add_row([
   aux+=1,
-  @procedimient[i]
+  @procedimientos[i]
   ])
 end
   end
