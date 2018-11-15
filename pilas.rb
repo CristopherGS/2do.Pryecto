@@ -150,6 +150,7 @@ class Pila
   a.add_row([{value:imprimir_la_pila(), alignment: :center}])
   end
   puts tabla
+  gets()
       end
 
       def tabla_de_procedimiento(contador, arreglob)

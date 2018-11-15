@@ -30,7 +30,7 @@ def ordenar_por_metodos(array, pila)
         if array.size != 0
             arreglob = array.join(' => ')
             pila.ordenar_pila(array)
-            pila.imprimir_procedimiento (arreglob)#arreglado
+            pila.mostrar_tabla (arreglob)#arreglado
         else
             puts 'ingrese valores'
         end 
