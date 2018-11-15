@@ -2,7 +2,7 @@ require 'terminal-table'
 def limpiar_pantalla
 system('clear')
 end
-class pila
+class Pila
         def initialize
             @pila = {
                 tope: nil,
@@ -71,7 +71,6 @@ class pila
                     contador=@pila[:size]+1
                     @procedimientos
     .push(imprimir_la_pila())
-    ..
                 elsif numero ==valor
                     tope = @pila[:tope]
                     nodo[:siguiente]=tope
@@ -80,7 +79,6 @@ class pila
                     contador=@pila[:size]+1
                     @procedimientos
     .push(imprimir_la_pila())
-    ..
                 elsif numero>valor
                     insertar_en_pila_auxiliar(valor)
                     @procedimientos
@@ -89,7 +87,6 @@ class pila
                     @pila[:tope]=@pila[:tope][:siguiente]
                     @procedimientos
     .push(imprimir_la_pila())
-    ..
                 elsif numero<valor
                     tope = @pila[:tope]
                     nodo[:siguiente]=tope
@@ -98,7 +95,6 @@ class pila
                     contador=@pila[:size]+1
                     @procedimientos
     .push(imprimir_la_pila())
-    ..
                 end
                 contador+=1
             end
