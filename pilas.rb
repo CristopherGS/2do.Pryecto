@@ -122,7 +122,7 @@ class Pila
                     lim_menor(arreglo[i])
                 end
             end
-            arreglo.clear
+            # arreglo.clear
         end
         
         def imprimir_la_pila
@@ -187,7 +187,7 @@ end
             puts 'la opcion que ingreso es incorrecta'
           end
         end
-        @procedimiento.clear
+        # @procedimiento.clear
       end
 
 end
