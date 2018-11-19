@@ -21,7 +21,7 @@ class Cola
     vacia: true
   }
   
-  @procedimientos=[]
+  @procedimientos= Array.new
   @enlazador=""
     end
 
