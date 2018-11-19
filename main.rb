@@ -1,5 +1,6 @@
 require 'byebug'
 require_relative 'pilas'
+require_relative 'listas'
 require_relative 'colas'
 def limpiar_pantalla
     system ("clear")
@@ -17,81 +18,90 @@ def ingreso_de_datos(array)
     array[i] = array[i].to_i
   end
 end
-def ordenar_por_metodos(array, cola, pila)
+
+def ordenar_por_metodos(array, cola, pila, lista)
     begin
         puts '1. Cola'
         puts '2. Pila'
         puts '3. Listas'
         puts '4. salir'
         puts 'Ingrese la opcion. '
-    opcion = gets.chomp
-    limpiar_pantalla()
-    if opcion == '1'
-        if array.size!=0
-            arreglob = array.join(' => ')
-            cola.ordenar_cola(array)
-            cola.mostrar_tabla (arreglob)
-            gets
+        opcion = gets.chomp
+        limpiar_pantalla()
+        if opcion == '1'
+            if array.size!=0
+                arreglob = array.join(' => ')
+                cola.ordenar_cola(array)
+                cola.mostrar_tabla (arreglob)
+                gets
             else
-              puts 'Ingrese nuevos datos para ordenar'
-              gets
+                puts 'Ingrese nuevos datos para ordenar'
+                gets
             end
+        elsif opcion == '2'
+            if array.size != 0
+                arreglob = array.join(' => ')
+                pila.ordenar_pila(array)
+                pila.mostrar_tabla (arreglob)#arreglado
+            else
+                puts 'ingrese valores'
+            end 
+        elsif opcion == '3'
+            if array.size!=0
+                arreglob = array.join(' => ')
+                lista.ordenar_lista(array)
+                lista.mostrar_tabla (arreglob)
+                gets
+            else
+                puts 'Ingrese nuevos datos para ordenar'
+                gets
+            end
+        end
+        limpiar_pantalla
+    end while opcion != '4'
+end
 
-    elsif opcion == '2'
-        if array.size != 0
-            arreglob = array.join(' => ')
-            pila.ordenar_pila(array)
-            pila.mostrar_tabla (arreglob)#arreglado
-        else
-            puts 'ingrese valores'
-        end 
-    elsif opcion == '3'
-    end
-    limpiar_pantalla
-end while opcion != '4'
-end 
-
-
-def ordenar_pasito_a_pasito_XD(array, cola, pila)
+def ordenar_pasito_a_pasito_XD(array, cola, pila, lista)
     begin
         puts '1. Cola'
         puts '2. Pila'
         puts '3. Listas'
         puts '4. salir'
         puts 'Ingrese la opcion. '
-    opcion = gets.chomp
-    limpiar_pantalla()
-    if opcion == '1'
-        if array.size!=0
-            arreglob = array.join(' => ')
-            cola.ordenar_cola(array)
-            cola.mostrar_pasos
-            gets
+        opcion = gets.chomp
+        limpiar_pantalla()
+        if opcion == '1'
+            if array.size!=0
+                arreglob = array.join(' => ')
+                cola.ordenar_cola(array)
+                cola.mostrar_pasos
+                gets
             else
-              puts 'Ingrese nuevos datos para ordenar'
-              gets
+                puts 'Ingrese nuevos datos para ordenar'
+                gets
             end
-
-    elsif opcion == '2'
-        if array.size != 0
-            arreglob = array.join(' => ')
-            pila.ordenar_pila(array)
-            pila.imprimir_procedimiento (arreglob)
-        else
-            puts 'ingrese valores'
-        end 
-    elsif opcion == '3'
-       
-    end
-    limpiar_pantalla
-end while opcion != '4'
+        elsif opcion == '2'
+            if array.size != 0
+                arreglob = array.join(' => ')
+                pila.ordenar_pila(array)
+                pila.imprimir_procedimiento (arreglob)
+            else
+                puts 'ingrese valores'
+            end 
+        elsif opcion == '3'
+            if array.size != 0
+                arreglob = array.join(' => ')
+                lista.ordenar_lista(array)
+                lista.mostrarpasos (arreglob)
+            else
+                puts 'ingrese valores'
+            end 
+        end
+        limpiar_pantalla
+    end while opcion != '4'
 end 
 
-
-
-
-
-
+lista = Lista.new
 pila = Pila.new
 cola = Cola.new
 array = []
@@ -105,9 +115,9 @@ begin
     if opcion == '1'
      ingreso_de_datos(array)
     elsif opcion == '2'
-        ordenar_por_metodos(array, cola, pila)
+        ordenar_por_metodos(array, cola, pila, lista)
     elsif opcion == '3'
-        ordenar_pasito_a_pasito_XD(array, cola, pila)
+        ordenar_pasito_a_pasito_XD(array, cola, pila, lista) 
     end
     limpiar_pantalla
 end while opcion != '4'

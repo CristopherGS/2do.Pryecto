@@ -87,7 +87,7 @@ class Cola
   end
 
   def ingresar_cola_menor(valor)#ingresa a la cola de  menores.
-    @procedimientos.push("ingresar en aux menor"+mostrar_cola())
+    @procedimientos.push("ingresar en cola de menores"+mostrar_cola())
     nodo = {
       valor: valor,
       siguiente: nil,
@@ -114,31 +114,31 @@ class Cola
       if num>valor
         menor+=1
         ingresar_cola_menor(valor)
-        @procedimientos.push("apartar menor: #{valor}")
+        @procedimientos.push("jala menor: #{valor}")
       elsif num<valor
         ingresar_cola_mayor(valor)
-        @procedimientos.push("apartar mayor: #{valor}")
+        @procedimientos.push("jala mayor: #{valor}")
       elsif num == valor
         ingresar_cola_mayor(valor)
-        @procedimientos.push("aparatar igual: #{valor}")
+        @procedimientos.push("jala igual: #{valor}")
       end
       @procedimientos.push(@cola[:tope][:valor])
       @cola[:tope]=@cola[:tope][:siguiente]           
     end
-    @procedimientos.push("*"+mostrar_cola())
+    @procedimientos.push(">>"+mostrar_cola())
     @cola[:fondo]=nil
     @cola[:tope]=nil
     @cola[:vacia]=true
-    @procedimientos.push("+"+mostrar_cola())
+    @procedimientos.push(">>"+mostrar_cola())
     if menor>0
       ingresar_menores()
-      @procedimientos.push("*"+mostrar_cola())
+      @procedimientos.push(">>"+mostrar_cola())
       fondo=@cola[:fondo]
       fondo[:siguiente]=nodo
       @cola[:fondo]=nodo
       @cola[:size]+=1
       ingresar_mayores()
-      @procedimientos.push("-"+mostrar_cola())
+      @procedimientos.push(">>"+mostrar_cola())
     else
       @cola[:tope]=nodo
       @cola[:fondo]=nodo
@@ -146,7 +146,7 @@ class Cola
       @cola[:vacia]=false
       ingresar_mayores()
     end
-    @procedimientos.push("*"+mostrar_cola())
+    @procedimientos.push(">>"+mostrar_cola())
     @cola_auxiliar_de_mayores[:tope]=nil
     @cola_auxiliar_de_mayores[:fondo]=nil
     @cola_auxiliar_de_mayores[:size]=0
@@ -207,7 +207,7 @@ class Cola
     
   def mostrar_tabla(arreglob) #MUESTRA LA COLA CON TABLA
     tabla = Terminal::Table.new do |a|
-      a.title= 'Datos Ordenado'
+      a.title= 'Datos Ordenados'
       a.headings = [{value:arreglob, alignment: :center}]
       a.add_row([{value:mostrar_cola(), alignment: :center}])
     end

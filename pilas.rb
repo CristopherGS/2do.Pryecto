@@ -143,6 +143,7 @@ class Pila
                 @enlace
             end
         end
+        
         def mostrar_tabla(arreglob)
   tabla = Terminal::Table.new do |a|
   a.title= 'Ordenar todos los datos'
